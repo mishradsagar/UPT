@@ -1,7 +1,7 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateUserDto } from './user.input';
+import { CreateUserDto, UpdateUserDTO } from './user.input';
 import { User, UserDocument } from './user.model';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -26,4 +26,9 @@ export class UserService {
   async getUserById(id: string): Promise<User> {
     return this.userModel.findOne({ id });
   }
+
+  async updateUser(id: string, user: UpdateUserDTO) {
+    return this.userModel.findOneAndUpdate({ id }, { $set: { ...user }}, { new: true });
+  }
+
 }
