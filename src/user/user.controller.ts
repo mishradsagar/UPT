@@ -1,5 +1,5 @@
-import { Body, ConflictException, Controller, Post } from '@nestjs/common';
-import { CreateUserDto } from './user.input';
+import { Body, ConflictException, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreateUserDto, GetUserDTO } from './user.input';
 import { User } from './user.model';
 import { UserService } from './user.service';
 
@@ -19,6 +19,17 @@ export class UserController {
       }
 
       return this.userService.createUser(user);;
+    }
+    catch (err) {
+      console.log(err);
+      return err;
+    }
+  }
+
+  @Get(':id')
+  async getUser(@Param() { id }: GetUserDTO) : Promise<User>{
+    try {
+      return this.userService.getUserById(id);
     }
     catch (err) {
       console.log(err);
