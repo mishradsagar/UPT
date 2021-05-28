@@ -31,4 +31,7 @@ export class UserService {
     return this.userModel.findOneAndUpdate({ id }, { $set: { ...user }}, { new: true });
   }
 
+  async deleteUser(id: string) {
+    return this.userModel.deleteOne({id});
+  }
 }
