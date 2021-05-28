@@ -9,9 +9,9 @@ describe('UserService', () => {
   let service: UserService;
   let user: User;
   const sampleUserInfo = {
-    "email": "tempmail1@gmail.com",
-    "givenName": "Alex",
-    "familyName": "T"
+    'email': 'tempmail1@gmail.com',
+    'givenName': 'Alex',
+    'familyName': 'T'
   }
 
   beforeAll(async () => {
@@ -60,8 +60,8 @@ describe('UserService', () => {
   it('should update a user', async () => {
     const update: UpdateUserDTO = {
       email: user.email,
-      givenName: "Alexa",
-      familyName: "Turmeric"
+      givenName: 'Alexa',
+      familyName: 'Turmeric'
     };
 
     const updatedUser = await service.updateUser(user.id, update);
